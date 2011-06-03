@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.1}
-  s.summary = %q{TODO}
+  s.summary = %q{hackneyed attempt to use s3 for clicktale}
   s.add_dependency('aws-s3')
 
   if s.respond_to? :specification_version then
