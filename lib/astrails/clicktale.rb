@@ -1,4 +1,4 @@
-require 'activesupport'
+require 'active_support/all'
 require 'astrails/clicktale/controller'
 require 'astrails/clicktale/helper'
 
@@ -16,7 +16,6 @@ module Astrails
                                             :secret_access_key => S3_CONFIG[:secret_access_key])
       end
     end
-    
 
     CONFIG = HashWithIndifferentAccess.new
     begin
