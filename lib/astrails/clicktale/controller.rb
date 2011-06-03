@@ -50,7 +50,7 @@ module Astrails
       end
 
       def clicktale_url
-        @clicktale_url ||= AWS::S3::S3Object.url_for(clicktale_path, S3_CONFIG[:bucket])
+        @clicktale_url ||= AWS::S3::S3Object.url_for(clicktale_path, S3_CONFIG[:bucket]).html_safe
       end
 
     end
