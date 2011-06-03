@@ -1,3 +1,5 @@
+require 'aws/s3'
+
 module Astrails
   module Clicktale
     module Controller
@@ -5,7 +7,7 @@ module Astrails
       def self.included(base)
         base.class_eval do
           @@clicktale_options = {}
-          around_filter :clicktaleize
+          after_filter :clicktaleize
           helper_method :clicktale_enabled?
           helper_method :clicktale_config
           helper_method :clicktale_path
@@ -25,9 +27,7 @@ module Astrails
       end
 
       def clicktaleize
-        returning(yield) do
-          cache_page(nil, "/clicktale/#{clicktale_cache_token}") if clicktale_enabled?
-        end
+        AWS::S3::S3Object.store(clicktale_path, render_to_string, S3_CONFIG[:bucket])
       end
 
       def clicktale_enabled?
@@ -50,7 +50,7 @@ module Astrails
       end
 
       def clicktale_url
-        @clicktale_url ||= "#{request.protocol}#{request.host_with_port}#{clicktale_path}"
+        @clicktale_url ||= AWS::S3::S3Object.url_for(clicktale_path, S3_CONFIG[:bucket])
       end
 
     end
