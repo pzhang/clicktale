@@ -13,7 +13,7 @@
     <%- if tag -%>
     ClickTaleTag('<%= tag %>');
     <%- end -%>
-    var ClickTaleFetchFrom = '<%= path %>';
+    var ClickTaleFetchFrom = '<%= path.html_safe %>';
     <%- if param -%>
     ClickTale(<%= project_id %>, <%= ratio %>, "<%= param %>");
     <%- else -%>
