@@ -28,7 +28,7 @@ module Astrails
 
       def clicktaleize
         begin
-          AWS::S3::S3Object.store(clicktale_path, render_to_string, S3_CONFIG[:bucket])
+          AWS::S3::S3Object.store(clicktale_path, render_to_string, S3_CONFIG[:bucket]) if clicktale_enabled?
         rescue ActionView::MissingTemplate
         end
       end
