@@ -1,4 +1,5 @@
 require 'active_support/all'
+require 'action_view'
 require 'astrails/clicktale/controller'
 require 'astrails/clicktale/helper'
 
